@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -23,6 +25,9 @@ import androidx.compose.ui.unit.dp
 import com.example.androidlab04.ui.theme.Androidlab04Theme
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Checkbox
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
 
 class MainActivity : ComponentActivity() {
@@ -55,12 +60,25 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 }
 @Composable
 fun MyLazyColumn() {
-    LazyColumn {
+    LazyColumn(
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxSize()
+    ) {
         items(10) { index ->
-            Text(text = "Item $index")
+            Text(
+                text = "Item $index",
+                modifier = Modifier
+                    .padding(8.dp)
+                    .background(Color.LightGray)
+                    .fillMaxWidth(),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
+
 
 @Composable
 fun MyLazyRow() {
@@ -90,6 +108,7 @@ fun MyGrid() {
         }
     }
 }
+
 
 fun Checkbox(checked: Boolean, onCheckedChange: (Boolean) -> Unit, interactionSource: () -> Unit) {
 
