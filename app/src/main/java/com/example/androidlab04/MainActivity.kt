@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -23,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.example.androidlab04.ui.theme.Androidlab04Theme
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Checkbox
+import androidx.compose.ui.graphics.Color
 
 
 class MainActivity : ComponentActivity() {
@@ -77,10 +80,15 @@ fun MyLazyRow() {
 @Composable
 fun MyGrid() {
     val gridItems = List(9) { index -> "Item $index" }
-    LazyVerticalGrid(cells = GridCells.Fixed(3)) {
+    LazyVerticalGrid(
+        cells = GridCells.Fixed(3),
+    ) {
         items(gridItems) { item ->
             Card(
-                modifier = Modifier.padding(8.dp),
+                modifier = Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth()
+                    .background(Color.Red),
             ) {
                 Checkbox(
                     checked = false,
@@ -90,6 +98,7 @@ fun MyGrid() {
         }
     }
 }
+
 
 fun Checkbox(checked: Boolean, onCheckedChange: (Boolean) -> Unit, interactionSource: () -> Unit) {
 
