@@ -26,6 +26,11 @@ import com.example.androidlab04.ui.theme.Androidlab04Theme
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.Checkbox
 import androidx.compose.ui.graphics.Color
+<<<<<<< HEAD
+=======
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+>>>>>>> Upgrading-component-1
 
 
 class MainActivity : ComponentActivity() {
@@ -58,12 +63,25 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 }
 @Composable
 fun MyLazyColumn() {
-    LazyColumn {
+    LazyColumn(
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxSize()
+    ) {
         items(10) { index ->
-            Text(text = "Item $index")
+            Text(
+                text = "Item $index",
+                modifier = Modifier
+                    .padding(8.dp)
+                    .background(Color.LightGray)
+                    .fillMaxWidth(),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
+
 
 @Composable
 fun MyLazyRow() {
